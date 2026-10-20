@@ -1,0 +1,242 @@
+/* 자동 생성 — 원본: hwaam.raw.css, 범위: .v-hw .hwbody */
+.v-hw .hwbody{
+        font-family:
+          "Pretendard",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Apple SD Gothic Neo",
+          "Noto Sans KR",
+          "Malgun Gothic",
+          sans-serif;
+        line-height: 1.65;
+        letter-spacing: -0.02em;
+        color: #2b2b2b;
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 30px;
+        background-color: #fdfdfd;
+      }
+.v-hw .hwbody .page-title{
+        text-align: center;
+        color: #112a46;
+        border-bottom: 4px solid #2b6cb0;
+        padding-bottom: 15px;
+        margin-bottom: 40px;
+        font-size: 26px;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+      }
+.v-hw .hwbody h2{
+        color: #2b6cb0;
+        border-left: 5px solid #e53e3e;
+        padding-left: 12px;
+        margin-top: 40px;
+        margin-bottom: 18px;
+        font-size: 19px;
+        font-weight: 700;
+        background-color: #f8fafc;
+        padding: 10px 12px;
+        border-radius: 0 6px 6px 0;
+      }
+.v-hw .hwbody h3{
+        color: #2d3748;
+        margin-top: 25px;
+        margin-bottom: 12px;
+        font-size: 17px;
+        font-weight: 700;
+        border-bottom: 2px dashed #e2e8f0;
+        padding-bottom: 6px;
+      }
+.v-hw .hwbody h4{
+        color: #1a202c;
+        font-size: 15.5px;
+        font-weight: 700;
+        margin-top: 20px;
+        margin-bottom: 6px;
+      }
+.v-hw .hwbody h4 .tag{
+        font-size: 13px;
+        font-weight: 500;
+        color: #718096;
+      }
+.v-hw .hwbody ul{
+        margin-top: 5px;
+        margin-bottom: 20px;
+        padding-left: 25px;
+      }
+.v-hw .hwbody li{
+        margin-bottom: 10px;
+        font-size: 15px;
+        color: #333;
+      }
+.v-hw .hwbody .highlight{
+        font-weight: 700;
+        color: #c53030;
+      }
+.v-hw .hwbody .fact-box{
+        background-color: #f0f9fa;
+        border: 1px solid #c4eeeb;
+        padding: 18px 20px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+        font-size: 14.5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+      }
+.v-hw .hwbody .fact-box strong{
+        color: #1a202c;
+      }
+.v-hw .hwbody table{
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        margin-bottom: 30px;
+        font-size: 14px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+.v-hw .hwbody th,.v-hw .hwbody td{
+        border: 1px solid #e2e8f0;
+        padding: 12px;
+        text-align: left;
+        vertical-align: top;
+      }
+.v-hw .hwbody th{
+        background-color: #edf2f7;
+        color: #2d3748;
+        font-weight: 700;
+        text-align: center;
+      }
+.v-hw .hwbody .center{
+        text-align: center;
+      }
+.v-hw .hwbody .badge-done{
+        color: #2f855a;
+        font-weight: bold;
+      }
+.v-hw .hwbody .badge-ing{
+        color: #2b6cb0;
+        font-weight: bold;
+      }
+.v-hw .hwbody .badge-plan{
+        color: #b7791f;
+        font-weight: bold;
+      }
+.v-hw .hwbody .badge-new{
+        color: #805ad5;
+        font-weight: bold;
+      }
+.v-hw .hwbody .src{
+        display: block;
+        margin-top: 4px;
+        font-size: 12px;
+        color: #8a94a6;
+        letter-spacing: -0.01em;
+      }
+.v-hw .hwbody .note{
+        font-size: 13px;
+        color: #718096;
+        margin-top: -18px;
+        margin-bottom: 28px;
+      }
+.v-hw .hwbody .check{
+        background-color: #fffaf0;
+        border: 1px solid #f6e05e;
+        border-radius: 6px;
+        padding: 14px 16px;
+        font-size: 13.5px;
+        color: #744210;
+        margin-bottom: 25px;
+      }
+.v-hw .hwbody .check strong{
+        color: #5f370e;
+      }
+.v-hw .hwbody .zone{
+        background-color: #f7fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        padding: 14px 16px;
+        margin-bottom: 14px;
+        font-size: 14.5px;
+      }
+.v-hw .hwbody .zone .k{
+        font-weight: 700;
+        color: #1a202c;
+      }
+.v-hw .hwbody .zone.caution{
+        background-color: #fff5f5;
+        border-color: #feb2b2;
+      }
+.v-hw .hwbody .vision{
+        background-color: #ebf8ff;
+        border: 1px solid #bee3f8;
+        border-radius: 8px;
+        padding: 20px;
+        font-size: 15px;
+      }
+.v-hw .hwbody .vision .slogan{
+        font-weight: 800;
+        color: #2b6cb0;
+        font-size: 16.5px;
+        display: block;
+        margin-bottom: 10px;
+      }
+.v-hw .hwbody .refs{
+        font-size: 13px;
+        color: #4a5568;
+        background: #f7fafc;
+        border-top: 3px solid #2b6cb0;
+        padding: 18px 20px;
+        border-radius: 0 0 6px 6px;
+      }
+.v-hw .hwbody .refs li{
+        font-size: 13px;
+        margin-bottom: 6px;
+      }
+.v-hw .hwbody .gis .lab{font-weight:600}
+.v-hw .hwbody .gis td.src{display:table-cell;margin:0;font-size:12.5px}
+.v-hw .hwbody .gis th{text-align:left}
+.v-hw .hwbody .gis .scroll{overflow-x:auto}
+.v-hw .hwbody .gis .head{font-size:17px;font-weight:700;color:#c53030;line-height:1.5}
+.v-hw .hwbody .gis .tag{display:inline-block;font-size:12px;padding:1px 7px;border-radius:10px;margin-right:4px;white-space:nowrap;font-weight:600}
+.v-hw .hwbody .gis .t-r{background:#fde8e4;color:#b5432f}
+.v-hw .hwbody .gis .t-g{background:#e6f2ec;color:#2f6b4f}
+.v-hw .hwbody .gis .t-b{background:#e8f0f8;color:#2d5f8f}
+.v-hw .hwbody .gis .t-y{background:#fbf4de;color:#8a6a12}
+.v-hw .hwbody .gis .check li{margin-bottom:6px;font-size:13.5px;color:#744210}
+.v-hw .hwbody .gis #dl{font:inherit;padding:7px 14px;border-radius:8px;border:1px solid #2b6cb0;background:#ebf4ff;color:#2b6cb0;cursor:pointer}
+.v-hw .hwbody .qs{margin:48px 0 36px;font-size:14.5px;line-height:1.65;word-break:keep-all;}
+.v-hw .hwbody .qs .qs-title{font-size:20px;font-weight:800;color:#1b2430;border-bottom:2px solid #1b2430;padding-bottom:10px;margin:0 0 22px;}
+.v-hw .hwbody .qs .panel{position:relative;border:1.5px solid;border-radius:14px;padding:30px 22px 12px;margin:0 0 30px;background:#fff;}
+.v-hw .hwbody .qs .panel .ptag{position:absolute;top:-15px;left:18px;color:#fff;font-weight:800;font-size:14.5px;padding:4px 16px;border-radius:4px;box-shadow:2px 2px 0 rgba(0,0,0,.15);}
+.v-hw .hwbody .qs .p-prob{border-color:#7a2a35;}
+.v-hw .hwbody .qs .p-prob .ptag{background:#7a2a35;}
+.v-hw .hwbody .qs .p-pot{border-color:#3b4a66;}
+.v-hw .hwbody .qs .p-pot .ptag{background:#3b4a66;}
+.v-hw .hwbody .qs .p-str{border-color:#6b6f75;}
+.v-hw .hwbody .qs .p-str .ptag{background:#5d6168;}
+.v-hw .hwbody .qs .p-zone{border-color:#3f7a2e;}
+.v-hw .hwbody .qs .p-zone .ptag{background:#3f7a2e;}
+.v-hw .hwbody .qs .it{margin:0 0 16px;}
+.v-hw .hwbody .qs .it h5{margin:0 0 4px;font-size:15.5px;font-weight:800;color:#1b2430;line-height:1.5;}
+.v-hw .hwbody .qs .it h5 .lk{font-size:12.5px;font-weight:600;color:#44506a;margin-left:6px;white-space:nowrap;}
+.v-hw .hwbody .qs .p-zone .it h5{color:#2e5f20;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;}
+.v-hw .hwbody .qs .it h5 .lt{font-size:12px;font-weight:600;color:#8a5a10;border:1px solid #e8cf95;background:#fdf6e7;border-radius:4px;padding:0 6px;margin-left:6px;text-decoration:none;display:inline-block;}
+.v-hw .hwbody .qs .it ul{margin:0;padding-left:14px;list-style:none;}
+.v-hw .hwbody .qs .it li{position:relative;padding-left:10px;margin:0 0 3px;color:#2f3a47;}
+.v-hw .hwbody .qs .it li::before{content:"-";position:absolute;left:0;color:#6b7887;}
+.v-hw .hwbody .qs .it li b{font-weight:700;color:#1b2430;}
+.v-hw .hwbody .qs .foot{font-size:12.5px;color:#6b7887;margin:-14px 0 0;}
+.v-hw .hwbody .qs abbr.gt{text-decoration:none;border-bottom:1px dotted #8a94a3;cursor:help;}
+.v-hw .hwbody .gl{margin:10px 0 40px;font-size:14px;line-height:1.65;word-break:keep-all;}
+.v-hw .hwbody .gl .gl-title{font-size:20px;font-weight:800;color:#1b2430;border-bottom:2px solid #1b2430;padding-bottom:10px;margin:0 0 6px;}
+.v-hw .hwbody .gl .gl-lead{font-size:13px;color:#6b7887;margin:0 0 18px;}
+.v-hw .hwbody .gl .grp{margin:0 0 20px;}
+.v-hw .hwbody .gl .grp h5{font-size:14.5px;font-weight:800;color:#3b4a66;margin:0 0 8px;padding-left:9px;border-left:3px solid #3b4a66;}
+.v-hw .hwbody .gl dl{margin:0;border:1px solid #e3e7ec;border-radius:10px;overflow:hidden;}
+.v-hw .hwbody .gl .row{display:grid;grid-template-columns:170px minmax(0,1fr);border-top:1px solid #eef1f5;}
+.v-hw .hwbody .gl .row:first-child{border-top:none;}
+.v-hw .hwbody .gl dt{background:#f6f8fb;padding:9px 13px;font-weight:700;color:#1b2430;}
+.v-hw .hwbody .gl dd{margin:0;padding:9px 13px;color:#2f3a47;}
+.v-hw .hwbody .gl dd .ex{display:block;font-size:12.5px;color:#6b7887;margin-top:2px;}
+@media (max-width:640px){.v-hw .hwbody .gl .row{grid-template-columns:1fr;}}
