@@ -22,6 +22,16 @@ t = re.search(r'export const TOC = (\[.*?\]);', s, re.S); toc = json.loads(t.gro
 sec = shp_section.section('hwaam', '4-5').replace('<h3>4-5.', '<h3 id="hw-45">4-5.', 1)
 i = h.find('<h2', h.find('4-4. 농촌특화지구 후보지 공간자료 대조'))
 h = h[:i] + sec + '\n' + h[i:]
+import axes_hubs  # 6-2 축·거점: PPT 범례 기준 추천표로 교체
+a = h.find('<h4>① 축 (고한 지도 범례와 같은 선 종류)</h4>'); z = h.find('<h4>③ 농촌특화지구 후보 원', a)
+if a >= 0 and z > a: h = h[:a] + axes_hubs.html('화암면') + '\n' + h[z:]
+from why_boxes import add_why
+h = add_why(h, 'hwaam')
+# 화암 PPT 도면 이미지 (다른 읍·면의 PDF 도면과 같은 자리: 3장·4장 첫머리)
+for k, n, what in (('3', 1, '지역현안'), ('4', 2, '발전방향')):
+    shutil.copy(f'/tmp/claude-0/iss/pptimg/hwaam-ppt0{n}.jpg', f'{extras.IMG}/hwaam-ppt0{n}.jpg')
+    h, ok = extras.insert_after_h2(h, k, extras.fig(f'img/iss/hwaam-ppt0{n}.jpg', f'화암면 {what} 도면 (화암면 현안 및 발전방향 PPT {n}쪽)'))
+    assert ok, k
 fg = extras.fgi_section('hwaam').replace('<h2>회의록', '<h2 id="hw-fgi">회의록', 1)
 h = h.rstrip() + '\n' + fg + '\n'
 k = next(n for n, x in enumerate(toc) if x['label'].startswith('4-4'))

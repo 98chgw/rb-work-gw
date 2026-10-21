@@ -27,7 +27,7 @@ JUDG = {
  'bukpyeong': [
   ('농촌마을보호지구', '남평1·2·3리, 장열1·2리, 북평리 소재지 (FGI)', '남평리: M1(주거 80)·M3(35) 충족, M4(176)·M5(63)는 경계를 좁히면 충족. 북평리 소재지는 주거 이용 필지 687개 중 393개가 제1·2종일반주거지역(도시지역) → 대상 아님, 소재지 북쪽 계획관리지역 M2(53) 충족. <b>장열리</b>는 주거필지 156개 중 66개가 제1종일반주거, 나머지도 흩어져 20필지 이상 모인 곳이 없음', OK + ' 남평리 / ' + NO + ' 장열리'),
   ('농촌융복합산업지구', '맛 전수관·나전역, 친환경 쌀 (FGI)', '솔돌마을(U2, 남평리) 반경 300m 관리·농림 27.1ha로 충족. <b>365행복마을(U1, 장열리)</b> 필지는 제1종일반주거, 주변도 녹지 85%로 융복합지구(관리·농림 한정) 대상 아님. 맛 전수관·나전역 지번은 미확인', OK + ' 솔돌 / ' + NO + ' 365행복'),
-  ('특성화농업지구', '남평리 친환경 유색벼 약 7만 평 (FGI)', '현재 친환경 23.1ha(7만 평)는 친환경 쌀 기준 50ha 미달. 다만 남평리 들녘 연접 단지 F1이 183.9ha, 그중 <b>논 91.1ha</b>로 단지 범위를 넓히면 50ha 기준을 채울 수 있는 땅은 있음', CO + '<br>면적 확대 전제'),
+  ('특성화농업지구', '남평리 친환경 유색벼 약 7만 평 (FGI)', '현재 친환경 23.1ha(7만 평)는 친환경 쌀 기준 50ha 미달(남평리 들녘 F1 183.9ha 중 논 91.1ha로 땅은 있음). 북평의 대표 작물은 이미 쌀이라 별도 작물 특화·무리한 면적 확대 없이, 쌀은 융복합(가공·브랜드)·경관(유색벼 들녘)으로 활용', '<b class="j-un">보류</b><br>지정하지 않음 (내부 검토)'),
   ('농촌경관지구', '북평·남평둔치, 샤스타데이지 꽃길 (FGI)', '둔치는 하천구역이라 필지 이용상황으로 판정 불가. 남평리 들녘(F1)은 농림 62.5%·계획관리 29.5%로 허용 용도지역 안', OK + '<br>(용도지역 요건)'),
   ('재생에너지지구', '옥산소길 기존 2개소, 주민 동의 시 (FGI)', '태양광 필지는 E1 장열리 198-4(2.7ha, 보전관리) 1곳만 확인. 5ha 미만이라 영농연계·관리형 규모는 아니고 마을소득형 범위', CO),
   ('축산지구·농촌산업지구', '지정 배제 (FGI 합의)', '축사 필지 군집 L1 남평리 1087-2 일원(7필지, 1.2ha, 농림지역) — 마을보호 후보 M1과 가까워 배제 판단과 맞음. 공업 필지 I1 북평리 63-13 일원(3.7ha)은 준공업지역이라 산업지구 대상 아님', '배제 타당'),
@@ -131,10 +131,9 @@ def section(tid, sid):
     sm = R['summary']
     h = [f'<h3>{sid}. 농촌특화지구 지정 기준 검토 및 후보군 (SHP 분석)</h3>',
          '<div class="fact-box">'
-         f'<p><b>무엇을 했나:</b> {e} 필지 {sm["parcels"]:,}개(토지특성정보 2024.8, 면적 {sm["area_km2"]}㎢)의 지목·용도지역·토지이용상황으로 8개 특화지구 유형의 지정 기준을 그대로 적용해, '
-         'FGI·본문에서 나온 후보가 기준에 맞는지 확인하고 기준을 채우는 다른 후보도 찾았어요. 기준은 농식품부 「농촌특화지구 활성화 방안」(2026.7) Ⅴ장 유형별 지정 기준(요약)이에요.</p>'
-         f'<p><b>{e} 용도지역 구성(면적):</b> {zstr(sm["zones"])} · 주거 이용 필지 {sm["res_parcels"]:,} · 공업 {sm["ind_parcels"]} · 축사 {sm["liv_parcels"]} · 태양광 {sm["sol_parcels"]}필지({sm["sol_area"]/1e4:.1f}ha) · 농경지 {sm["farm_area_ha"]:,}ha</p>'
-         f'<p><a class="btn" href="data/{tid}-candidates.geojson" download="{e}_특화지구후보.geojson">QGIS용 후보 레이어 받기 (GeoJSON · EPSG:5179)</a></p>'
+         f'<p><b>자료</b> 필지 토지특성정보(2024.8) {sm["parcels"]:,}필지·{sm["area_km2"]}㎢ · <b>기준</b> 「농촌특화지구 활성화 방안」(농식품부, 2026.7) 유형별 지정 기준</p>'
+         f'<p><b>용도지역(면적)</b> {zstr(sm["zones"])} · 주거 이용 필지 {sm["res_parcels"]:,} · 공업 {sm["ind_parcels"]} · 축사 {sm["liv_parcels"]} · 태양광 {sm["sol_parcels"]}필지({sm["sol_area"]/1e4:.1f}ha) · 농경지 {sm["farm_area_ha"]:,}ha</p>'
+         f'<p><a class="btn" href="data/{tid}-candidates.geojson" download="{e}_특화지구후보.geojson">후보 레이어 받기 (GeoJSON)</a></p>'
          '</div>']
     # ① 제안 대조
     h.append('<h4>① FGI·본문 후보의 기준 충족 여부</h4><div class="tw"><table class="shp-j"><tr><th>유형</th><th>제안 후보지 (출처)</th><th>필지 분석 결과</th><th>판정</th></tr>')
@@ -144,13 +143,13 @@ def section(tid, sid):
     # ② 지도
     h.append('<h4>② 후보지 지도</h4>')
     for f, cap in [(f'img/iss/{tid}-shp.png', f'{e} 전체'), (f'img/iss/{tid}-shp-zoom.png', '후보 밀집부 확대')][: 2 if has_zoom else 1]:
-        h.append(f'<div class="fig iss-fig"><a href="{f}" target="_blank" rel="noopener"><img src="{f}" alt="{e} 특화지구 후보 {cap}" loading="lazy" style="width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08)"></a><p class="src">{cap} · 필지 토지특성정보(2024.8)·개발진흥지구 shp로 작성 · 누르면 원본 크기</p></div>')
+        h.append(f'<div class="fig iss-fig"><a href="{f}" target="_blank" rel="noopener"><img src="{f}" alt="{e} 특화지구 후보 {cap}" loading="lazy" style="width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08)"></a><p class="src">{cap}</p></div>')
     # ③ 유형별 후보군
     h.append('<h4>③ 유형별 후보군 (기준 적용 결과)</h4>')
     for t in ('village', 'industry', 'livestock', 'energy', 'farm', 'fusion'):
         lst = sel.get(t, [])
         name = TYPES[t][1]
-        h.append(f'<h5>{TYPES[t][0]} · {name}</h5><p class="note">기준: {CRIT[t]}</p>')
+        h.append(f'<h5>{TYPES[t][0]} · {name}</h5><p class="note">{CRIT[t]}</p>')
         if not lst:
             msg = {'village': '30호 이상 비도시 취락이 없어요.', 'industry': '1.5ha 이상 공업 필지 군집이 없어요.', 'livestock': '축사 필지 3개 이상·0.9ha 이상 군집이 없어요.',
                    'energy': '1ha 이상 태양광 필지 군집이 없어요.', 'farm': '10ha 이상이면서 관리·농림지역이 절반 넘는 연접 농경지가 없어요.', 'fusion': '농어촌공사 지정 체험휴양마을이 없어요.'}[t]
@@ -163,7 +162,7 @@ def section(tid, sid):
         devs = '; '.join(f"{d['name'] or d['kind']} {d['area']/1e4:.1f}ha({d['ri']})" for d in R['dev'])
         h.append(f'<p class="note">개발진흥지구(용도지구): {devs} — 후보 경계와 겹치면 기존 지구단위계획과 관계 정리가 필요해요.</p>')
     # ④ 방법·한계
-    h.append('<details class="shp-m"><summary>분석 방법과 한계 펼치기</summary><ul>'
+    h.append('<details class="shp-m"><summary>분석 방법·한계</summary><ul>'
              '<li><b>주거 필지 = 호수 대용:</b> 이용상황이 단독·연립·다세대·아파트·주거기타인 필지 수예요. 아파트 1필지에 여러 호가 있거나 한 필지에 집이 여러 채면 실제 호수와 달라요.</li>'
              '<li><b>마을보호 지구 경계:</b> 80m 안에 이어진 주거 필지를 한 마을로 묶고, 주거 필지에서 45m 안의 5,000㎡ 미만 필지(대·전·답·도로 등, 임야·하천 제외)를 지구로 잡았어요. 같은 마을을 25m로 좁혀 다시 계산한 값도 함께 적었어요 — 밀도 기준은 경계를 어떻게 그리느냐에 따라 달라져요.</li>'
              '<li><b>산업·축산·재생에너지:</b> 이용상황 공업용·공업나지·공업기타(+지목 공장용지), 전축사·답축사·목장용지, 태양광 필지를 120·200·150m 간격으로 묶은 군집이에요. 축산지구의 "축사 면적 30%"는 건축물 면적이 필요해서 필지 면적으로는 판정하지 않았어요.</li>'

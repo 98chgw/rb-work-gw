@@ -198,3 +198,30 @@ body{margin:0;background:var(--h-paper);color:var(--h-ink);
 .srch-txt{display:block;font-size:14px;line-height:1.6}
 .srch mark{background:#FFE36E;color:#211922;border-radius:3px;padding:0 1px}
 .srch-hit{outline:3px solid #F5B400!important;outline-offset:4px;border-radius:6px;background:rgba(255,227,110,.35)!important;transition:background .6s}
+
+/* 현안 문서 위치 → 지도 링크 (글자: 카카오맵, N: 네이버지도) */
+.v-hw .mapw{white-space:nowrap}
+.v-hw a.mapl{color:inherit;text-decoration:underline;text-decoration-color:var(--h-accent,#E60023);text-decoration-thickness:1.5px;text-underline-offset:3px;cursor:pointer}
+.v-hw a.mapl:hover{color:var(--h-accent,#E60023)}
+.v-hw a.mapn{display:inline-block;margin-left:3px;width:15px;height:15px;line-height:15px;border-radius:4px;background:#03C75A;color:#fff!important;font:800 9.5px/15px system-ui,sans-serif;text-align:center;text-decoration:none;vertical-align:1px;opacity:.55}
+.v-hw a.mapn:hover,.v-hw a.mapn:focus-visible{opacity:1}
+@media print{.v-hw a.mapl{text-decoration:none}.v-hw a.mapn{display:none}}
+
+/* 현안 문서 처리 태그 (유지·수정·신규·삭제) */
+.v-hw .hwbody .tag.t-g{background:rgba(47,107,79,.14);color:#2f6b4f}
+.v-hw .hwbody .tag.t-b{background:rgba(45,95,143,.13);color:#2d5f8f}
+.v-hw .hwbody .tag.t-r{background:rgba(230,0,35,.11);color:#b5162f}
+.v-hw .hwbody .tag.t-y{background:rgba(138,106,18,.15);color:#8a6a12}
+:root[data-theme="dark"] .v-hw .hwbody .tag.t-g{color:#8fd1ae}
+:root[data-theme="dark"] .v-hw .hwbody .tag.t-b{color:#9cc3ea}
+:root[data-theme="dark"] .v-hw .hwbody .tag.t-r{color:#ff9aa8}
+:root[data-theme="dark"] .v-hw .hwbody .tag.t-y{color:#e2c46f}
+@media (prefers-color-scheme: dark){
+:root:not([data-theme="light"]) .v-hw .hwbody .tag.t-g{color:#8fd1ae}
+:root:not([data-theme="light"]) .v-hw .hwbody .tag.t-b{color:#9cc3ea}
+:root:not([data-theme="light"]) .v-hw .hwbody .tag.t-r{color:#ff9aa8}
+:root:not([data-theme="light"]) .v-hw .hwbody .tag.t-y{color:#e2c46f}}
+
+/* 해설(쉽게 읽기) 숨기기 — 본문만 보기·본문만 인쇄 */
+.v-doc .hide-why .why{display:none!important}
+@media print{.v-doc .why{break-inside:avoid}}

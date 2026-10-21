@@ -3,6 +3,7 @@ import DocView from './plan/DocView.jsx'
 import * as CH3 from './plan/content_ch3.js'
 import * as HWAAM from './issues/content_hwaam.js'
 import { TOWN_DOCS } from './issues/index.js'
+import { linkPlaces } from './issues/maplinks.js'
 import * as WJ2 from './plan/content_wanju2.js'
 import ConsultApp from './consult/App.jsx'
 import { DATA as DATA_WJ } from './consult/data.js'
@@ -338,7 +339,7 @@ function Page({ route, go, stats, open, reload, county }) {
       return (
         <div className="v-doc v-hw">
           <DocView key={`iss-${t.id}`} docKey={`iss-${t.id}`} idPrefix={`iss-${t.id}~`} content={TOWN_DOCS[t.id]} title={`${t.name} 지역현안 및 발전방향`}
-            fileName={`${t.name}_지역현안`} mainClass="hwbody" memoToggle={false} blockSel={HW_BLOCKS} onRootClick={t.id === 'hwaam' ? hwaamClick : undefined} />
+            fileName={`${t.name}_지역현안`} mainClass="hwbody" memoToggle={false} blockSel={HW_BLOCKS} onRootClick={t.id === 'hwaam' ? hwaamClick : undefined} enhance={ENHANCE[t.id] || (ENHANCE[t.id] = (root) => linkPlaces(root, t.name))} />
         </div>
       )
     }
@@ -349,6 +350,9 @@ function Page({ route, go, stats, open, reload, county }) {
   }
   return <Home go={go} stats={stats} open={open} reload={reload} />
 }
+
+/* 읍·면 문서 표의 위치 → 지도 링크 (읍·면별 함수 하나로 고정해 다시 그리기 방지) */
+const ENHANCE = {}
 
 /* 화암면 문서 : 코멘트 달 수 있는 단위, CSV 내려받기 버튼 */
 const HW_BLOCKS = 'p, li, tr, h2, h3, h4, h5, h6, figure, dt, .fact-box, .vision'

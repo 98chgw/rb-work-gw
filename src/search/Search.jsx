@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { buildIndex, search, bestSentence, marks, BLOCK_SEL } from './engine.js'
 
 const CATS = [['all', '전체'], ['plan', '기본계획'], ['consult', '컨설팅'], ['issue', '현안']]
-const EXAMPLES = ['화암 마을보호지구 후보', '빈집 현황', '사과 재배 면적', '태양광 주민 반대', '북평 친환경 쌀 50ha', '고한 소재지 용도지역', '원주 소결 지적']
+const EXAMPLES = ['화암 마을보호지구 후보', '빈집 현황', '사과 재배 면적', '태양광 주민 반대', '사북 정선군립병원', '고한 소재지 용도지역', '원주 소결 지적']
 const lsGet = (k, d) => { try { const v = localStorage.getItem(k); return v === null ? d : JSON.parse(v) } catch { return d } }
 const lsSet = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)) } catch { /* */ } }
 

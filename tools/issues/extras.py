@@ -6,7 +6,8 @@
 이미지는 사이트 public/img/iss/ 에 파일로 두고 상대경로로 참조"""
 import os, re, sys, glob, shutil, html as H
 sys.path.insert(0, '/tmp/claude-0/iss')
-from callouts import callout_html
+from callouts import callout_html, zonebox_html, put_zone_panel
+from why_boxes import add_why
 from fgi2html import fgi_html
 
 SITE = '/tmp/claude-0/hub/site'
@@ -25,7 +26,7 @@ TRANS = {}  # AI 녹취 전사(북평·임계)는 주민 실명이 들어 있어
 def fig(src, cap):
     return (f'<div class="fig iss-fig"><a href="{src}" target="_blank" rel="noopener"><img src="{src}" alt="{H.escape(cap)}" loading="lazy" '
             f'style="width:100%;height:auto;display:block;border-radius:10px;border:1px solid rgba(0,0,0,.08)"></a>'
-            f'<p class="src" style="margin-top:6px">{cap} · 그림을 누르면 원본 크기로 열려요</p></div>')
+            f'<p class="src" style="margin-top:6px">{cap}</p></div>')
 
 
 def pdf_figs(tid):
@@ -35,7 +36,7 @@ def pdf_figs(tid):
         name = f'{tid}-pdf{pg:02d}.jpg'
         shutil.copy(f'/tmp/claude-0/iss/pdfimg/pg-{pg:02d}.jpg', f'{IMG}/{name}')
         what = '지역현안' if k == '3' else '발전방향'
-        out[k] = fig(f'img/iss/{name}', f'작성 도면 — {NAMES[tid]} {what} (「정선군 현안 및 발전방향 7개 지역」 PDF {pg}쪽)')
+        out[k] = fig(f'img/iss/{name}', f'{NAMES[tid]} {what} 도면 (정선군 현안 및 발전방향 PDF {pg}쪽)')
     return out
 
 
@@ -70,7 +71,6 @@ def fgi_section(tid):
         shutil.copy(f'/tmp/claude-0/iss/fgiimg/{tid}.jpg', f'{IMG}/{name}'); src = f'img/iss/{name}'
     body = fgi_html(U + f, photo_src=src)
     h = [f'<h2>회의록 ㅣ {NAMES[tid]} FGI 인터뷰 결과 ({date})</h2>',
-         '<p class="note">보내 준 「FGI 인터뷰 결과」 한글 파일을 문항·답변 그대로 옮긴 원문이에요. 위 본문(3~5장)의 FGI 인용은 이 회의록을 근거로 해요.</p>',
          f'<div class="fgi-doc">{body}</div>']
     if tid in TRANS:
         tr, n = transcript_html(TRANS[tid])
@@ -85,11 +85,10 @@ def run(shp_parts=None):
         tid = os.path.basename(f).split('.')[0]
         b = open(f, encoding='utf-8').read()
         # 1) 말풍선: 6-2 안, '④ 기존 도면에서 고칠 곳' 앞 또는 6-2 다음 h2 앞
-        co = callout_html(tid)
+        co = callout_html(tid) + '\n' + zonebox_html(tid)
         if co:
             i = b.find('6-2.')
-            j = b.find('<h4>④ 기존 도면', i)
-            if j < 0: j = b.find('<h2', i)
+            j = b.find('<h2', i)  # 6-2 끝(④ 기존 도면에서 고칠 곳 뒤)
             b = b[:j] + co + '\n' + b[j:]
         # 2) PDF 도면
         pf = pdf_figs(tid)
@@ -101,6 +100,10 @@ def run(shp_parts=None):
             j = b.find('<h2>종합 발전방향')
             if j < 0: j = b.find('<h2 class="qs-title"')
             b = b[:j] + shp_parts[tid] + '\n' + b[j:]
+        # 요약 절 후보군 패널: 지도 박스와 같은 후보지역 + 지정방향
+        b = put_zone_panel(b, tid)
+        # 절마다 「쉽게 읽기 — 이렇게 판단한 이유」
+        b = add_why(b, tid)
         # 4) 회의록: 문서 맨 끝(용어 설명 뒤)
         b = b.rstrip() + '\n' + fgi_section(tid) + '\n'
         open(f'/tmp/claude-0/iss/out_final/{tid}.body.html', 'w', encoding='utf-8').write(b)

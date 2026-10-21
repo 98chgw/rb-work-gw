@@ -54,7 +54,7 @@ function writePref(key, value) {
 /* 문서 보기 (기본계획 각 장 · 읍·면 현안 문서 공용)
    content = { COVER_HTML, MAIN_HTML, FOOTER_HTML, TOC } */
 export default function DocView({
-  docKey, content, title, mainClass = '', blockSel = BLOCK_SEL, idPrefix = '', fileName = '정선군_기본구상', onRootClick, memoToggle = true,
+  docKey, content, title, mainClass = '', blockSel = BLOCK_SEL, idPrefix = '', fileName = '정선군_기본구상', onRootClick, memoToggle = true, enhance,
 }) {
   const { COVER_HTML, MAIN_HTML, FOOTER_HTML, TOC } = content
   const mainRef = useRef(null)
@@ -64,6 +64,8 @@ export default function DocView({
   const [cur, setCur] = useState(0)
   const [showSrc, setShowSrc] = useState(() => readPref('js3.showSrc', true))
   const [showMemo, setShowMemo] = useState(() => readPref('js3.showMemo', true))
+  const [showWhy, setShowWhy] = useState(() => readPref('js3.showWhy', true))
+  const hasWhy = useMemo(() => MAIN_HTML.includes('class="why"'), [MAIN_HTML])
   const [active, setActive] = useState(TOC[0]?.id)
   /* 코멘트 */
   const [allComments, setComments] = useState([])
@@ -139,6 +141,7 @@ export default function DocView({
   useEffect(() => { try { localStorage.setItem('js3.author', author) } catch { /* 무시 */ } }, [author])
   useEffect(() => writePref('js3.showSrc', showSrc), [showSrc])
   useEffect(() => writePref('js3.showMemo', showMemo), [showMemo])
+  useEffect(() => writePref('js3.showWhy', showWhy), [showWhy])
 
   /* 입력 지연 처리 */
   useEffect(() => {
@@ -151,11 +154,12 @@ export default function DocView({
     const root = mainRef.current
     if (!root) return
     root.innerHTML = MAIN_HTML
+    if (enhance) enhance(root)
     if (!debounced) window.scrollTo(0, 0)
     const found = debounced.length >= 2 ? highlight(root, debounced) : []
     setMarks(found)
     setCur(0)
-  }, [debounced, MAIN_HTML])
+  }, [debounced, MAIN_HTML, enhance])
 
   /* 코멘트 위치 표시 (본문을 다시 그린 뒤, 또는 코멘트가 바뀔 때) */
   useLayoutEffect(() => {
@@ -261,8 +265,8 @@ export default function DocView({
   }
 
   const wrapClass = useMemo(
-    () => ['wrap', showSrc ? '' : 'hide-src', showMemo ? '' : 'hide-memo', commentMode ? 'cm-mode' : ''].join(' ').trim(),
-    [showSrc, showMemo, commentMode]
+    () => ['wrap', showSrc ? '' : 'hide-src', showMemo ? '' : 'hide-memo', showWhy ? '' : 'hide-why', commentMode ? 'cm-mode' : ''].join(' ').trim(),
+    [showSrc, showMemo, showWhy, commentMode]
   )
 
   return (
@@ -288,6 +292,11 @@ export default function DocView({
           <button className="btn" aria-pressed={!showSrc} onClick={() => setShowSrc((v) => !v)}>
             출처 숨기기
           </button>
+          {hasWhy && (
+            <button className="btn" aria-pressed={!showWhy} onClick={() => setShowWhy((v) => !v)} title="절마다 붙은 「쉽게 읽기 — 이렇게 판단한 이유」 해설을 숨기고 본문만 봅니다">
+              해설 숨기기
+            </button>
+          )}
           {memoToggle && (
             <button className="btn" aria-pressed={!showMemo} onClick={() => setShowMemo((v) => !v)}>
               작업메모·검토박스 숨기기

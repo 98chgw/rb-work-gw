@@ -101,7 +101,7 @@ def fgi_html(path, photo_src=None, title_hint=''):
                 if len(cs) >= 2:
                     dl.append(f'<tr><th>{E(" ".join(cs[0]["paras"]))}</th><td>' + '<br>'.join(E(p) for p in sum((c['paras'] for c in cs[1:]), [])) + '</td></tr>')
             box = '<div class="fgi-meta"><table class="fgi-mt"><tbody>' + ''.join(dl) + '</tbody></table>'
-            if photo_src: box += f'<figure class="fgi-ph"><img src="{photo_src}" alt="FGI 인터뷰 현장" loading="lazy"><figcaption>인터뷰 현장 (원문 한글 파일 사진)</figcaption></figure>'
+            if photo_src: box += f'<figure class="fgi-ph"><img src="{photo_src}" alt="FGI 인터뷰 현장" loading="lazy"><figcaption>인터뷰 현장</figcaption></figure>'
             if cur: out.append(close(cur)); cur = None
             out.append(box + '</div>'); continue
         # 문항 표: [번호|질문] 행 → 질문 / 짧은 단독 칸 → 소제목 / 나머지 → 답변 문단. 다음 쪽으로 이어진 표는 앞 질문에 붙임
